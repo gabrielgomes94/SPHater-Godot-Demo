@@ -16,12 +16,16 @@ _global_script_class_icons={
 [application]
 
 config/name="Water2D"
-run/main_scene="res://Liquid.tscn"
+run/main_scene="res://addons/sph_fluid/Liquid.tscn"
 config/icon="res://sprites/icon.png"
 
 [debug]
 
 settings/fps/force_fps=60
+
+[editor_plugins]
+
+enabled=PoolStringArray( "sph_fluid" )
 
 [input]
 
