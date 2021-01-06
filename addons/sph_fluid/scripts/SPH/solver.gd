@@ -12,7 +12,7 @@ var neighborhoods = []
 var number_particles
 var particles = []
 
-func _init():
+func _init(position_offset):
 	var _particles = Vector2(Constants.NUMBER_PARTICLES/2, Constants.NUMBER_PARTICLES)
 	number_particles = _particles.x * _particles.y
 
@@ -25,7 +25,7 @@ func _init():
 	var d = particle_rect.size / _particles
 	for i in range(_particles.x):
 		for j in range(_particles.y):
-			var pos = Vector2(i,j)*d + Vector2(0, 0.25)
+			var pos = Vector2(i,j)*d +  position_offset
 			pos.x += rand_range(-0.001,0.001)
 			pos.y += rand_range(-0.001,0.001)
 
