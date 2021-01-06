@@ -39,3 +39,8 @@ func _render(draw_point, particle_index):
 		particle_index,
 		_SPH.particles[particle_index].position,
 		draw_point)
+
+	_render_service.render_speed_based_particles(
+		particle_index,
+		_SPH.particles[particle_index].velocity,
+		draw_point)

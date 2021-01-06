@@ -45,17 +45,11 @@ func attraction_force(position, strength):
 
 func update(delta, draw_mode=Constants.DRAW_MODE_BLOB):
 	_find_neighborhoods()
-
 	calculate_density()
 	calculate_pressure()
 	calculate_force_density(draw_mode)
-
 	integration_step(delta)
-	collision_handling()
-
-	#breakpoint
 	_grid.update_structure(particles)
-
 
 
 func _find_neighborhoods():
@@ -119,20 +113,3 @@ func integration_step(delta):
 		particles[i].position += delta * particles[i].velocity
 
 		particles[i].force *= 0
-
-func collision_handling():
-	for i in range(number_particles):
-
-		if particles[i].position.x < 0:
-			particles[i].position.x = 0
-			particles[i].velocity.x *= -0.1
-		elif particles[i].position.x > Constants.WIDTH:
-			particles[i].position.x = Constants.WIDTH
-			particles[i].velocity.x *= -0.1
-
-		if particles[i].position.y < 0:
-			particles[i].position.y = 0
-			particles[i].velocity.y *= -0.1
-		elif particles[i].position.y > Constants.HEIGHT:
-			particles[i].position.y = Constants.HEIGHT
-			particles[i].velocity.y *= -0.1

@@ -23,6 +23,10 @@ config/icon="res://sprites/icon.png"
 
 settings/fps/force_fps=60
 
+[display]
+
+window/size/height=800
+
 [editor_plugins]
 
 enabled=PoolStringArray( "sph_fluid" )
