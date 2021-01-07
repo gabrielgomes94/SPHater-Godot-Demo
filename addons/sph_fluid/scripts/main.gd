@@ -4,6 +4,9 @@ const RenderService = preload('res://addons/sph_fluid/scripts/renderer/render_se
 const Constants = preload('res://addons/sph_fluid/scripts/constants.gd')
 const SPH_Solver = preload('res://addons/sph_fluid/scripts/SPH/solver.gd')
 const Collision = preload('res://addons/sph_fluid/scripts/collision/collision.gd')
+const Conversor = preload('res://addons/sph_fluid/scripts/conversor.gd')
+
+export(Vector2) var liquid_position
 
 var _collision
 var _render_service
@@ -12,8 +15,10 @@ var _SPH
 onready var liquid_view = $LiquidView
 
 func _ready():
+	var initial_position = Conversor.screen_position_to_particle(liquid_position)
+
 	_collision = Collision.new()
-	_SPH = SPH_Solver.new()
+	_SPH = SPH_Solver.new(initial_position)
 	_render_service = RenderService.new(liquid_view)
 
 	_render_service.render(_SPH.particles)
